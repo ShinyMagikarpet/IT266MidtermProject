@@ -1,0 +1,143 @@
+windowDef Desktop
+{
+	rect	0,0,640,480
+	visible	1
+	nocursor	1
+	windowDef bg
+	{
+		rect	0,0,640,480
+		visible	1
+		background	"gfx/guis/test/xload/bg"
+		matcolor	1,1,1,1
+	}
+	windowDef gear1
+	{
+		rect	80,-37,480,480
+		visible	1
+		background	"gfx/guis/test/xload/gear1"
+		matcolor	0.223,0.266,0.133,1
+	}
+	windowDef gear2
+	{
+		rect	140,23,360,360
+		visible	1
+		background	"gfx/guis/test/xload/gear2"
+		matcolor	0.113,0.149,0.0588,1
+	}
+	windowDef gear3
+	{
+		rect	140,23,360,360
+		visible	1
+		background	"gfx/guis/test/xload/gear3"
+		matcolor	0.0509,0.0666,0.0235,1
+	}
+	windowDef circle
+	{
+		rect	120,3,400,400
+		visible	1
+		background	"gfx/guis/test/xload/circle1"
+		matcolor	0.196,0.247,0.152,1
+	}
+	windowDef qlogo_add
+	{
+		rect	130,21,380,380
+		visible	1
+		background	"gfx/guis/test/xload/qlogo_add"
+		matcolor	1,1,1,1
+	}
+	windowDef load
+	{
+		rect	-200,0,200,480
+		visible	1
+		background	"gfx/guis/test/xload/pulse"
+		matcolor	1,1,1,1
+
+		onTime 0 {
+			transition "rect" "$load::rect" "$d_load::rect" "30000" ;
+		}
+
+		onTime +30000 {
+			resettime "0" ;
+		}
+
+	}
+	windowDef qlogo
+	{
+		rect	130,21,380,380
+		visible	1
+		background	"gfx/guis/test/xload/qlogo"
+		matcolor	0,0,0,1
+	}
+	windowDef top_edge
+	{
+		rect	0,0,640,120
+		visible	1
+		background	"gfx/guis/test/xload/top_edge"
+		matcolor	1,1,1,1
+	}
+	windowDef btm_edge
+	{
+		rect	0,240,640,240
+		visible	1
+		background	"gfx/guis/test/xload/btm_edge"
+		matcolor	1,1,1,1
+	}
+	windowDef tip_title
+	{
+		rect	52,349,224,24
+		visible	1
+		forecolor	1,0.501,0,1
+		text	"TIP: ROCKET YUMPING"
+		textscale	.35
+		font	"fonts/lowpixel"
+	}
+	windowDef tip
+	{
+		rect	52,378,534,62
+		visible	1
+		forecolor	1,1,1,1
+		text	"Cpl. Slidjonovitch earned his nickname 'Sledge' by killing a Strogg with his bare hands via dismemberment, and using the limbs to hold off other Strogg until help arrived."
+		textscale	0.31
+		font	"fonts/lowpixel"
+	}
+	windowDef grad
+	{
+		rect	0,40,326,24
+		visible	1
+		background	"gfx/guis/common/gradient3a"
+		matcolor	0,0,0,1
+	}
+	windowDef loading
+	{
+		rect	48,30,276,40
+		visible	1
+		forecolor	1,1,1,1
+		text	"LOADING"
+		textscale	0.56
+		font	"fonts/marine"
+	}
+	windowDef d_load
+	{
+		rect	640,0,200,479
+		visible	0
+		background	"gfx/guis/test/xload/pulse"
+		matcolor	1,1,1,1
+	}
+	windowDef btn_a_popup
+	{
+		rect	545,394,32,32
+		visible	1
+		background	"gfx/guis/mainmenu/controller_btn_a"
+		matcolor	1,1,1,1
+	}
+	windowDef btnlabel_a_popup
+	{
+		rect	58,392,475,34
+		visible	1
+		text	"#str_200984"
+		font	"fonts/lowpixel"
+		textscale	0.5
+		forecolor	1,1,1,0.8
+		textalign	2
+	}
+}

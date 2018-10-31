@@ -1,0 +1,292 @@
+windowDef Desktop
+{
+	comment	"scripts to use: gui_Parm_script_forward, gui_Parm_script_backward, gui_Parm_script_barrels, gui_Parm_script_pallet. uses namedevents 'enable' and 'disable' to enable and disable the gui."
+	rect	0,0,640,480
+	backcolor	0,0,0,1
+	visible	1
+	definevec4	"arrow_on"	0.992,0.937,0.549,1
+	definevec4	"arrow_off"	0.890,0.666,0.368,1
+	definevec4	"pointer_off"	0.984,0.905,0.741,1
+	definevec4	"white"	1,1,1,1
+	definevec4	"black"	0,0,0,1
+	definevec4	"button_on"	0.992,0.647,0,1
+	definevec4	"button_off"	0.854,0.584,0.313,1
+	definevec4	"icon_off"	0.984,0.905,0.741,1
+	definevec4	"icon_grey"	0.650,0.650,0.650,1
+	definevec4	"grey"	0.576,0.576,0.576,1
+	definevec4	"darkgrey"	0.219,0.219,0.219,1
+	definevec4	"redarrow"	0.541,0.188,0.0352,1
+	float	"active"	0
+
+	onNamedEvent disableArrows {
+		set "b_uparrow::visible" "0" ;
+		set "b_dnarrow::visible" "0" ;
+		transition "button_arrowup::matcolor" "$desktop::arrow_off" "$desktop::grey" "150" ;
+		transition "button_arrowdown::matcolor" "$desktop::arrow_off" "$desktop::grey" "150" ;
+		transition "button_pointer_up::matcolor" "$desktop::pointer_off" "$desktop::darkgrey" "150" ;
+		transition "button_pointer_dwn::matcolor" "$desktop::pointer_off" "$desktop::darkgrey" "150" ;	
+	}
+
+	onNamedEvent enableArrows {
+		set "b_uparrow::visible" "1" ;
+		set "b_dnarrow::visible" "1" ;
+		transition "button_arrowup::matcolor" "$desktop::grey" "$desktop::arrow_off" "150" ;
+		transition "button_arrowdown::matcolor" "$desktop::grey" "$desktop::arrow_off" "150" ;
+		transition "button_pointer_up::matcolor" "$desktop::darkgrey" "$desktop::pointer_off" "150" ;
+		transition "button_pointer_dwn::matcolor" "$desktop::darkgrey" "$desktop::pointer_off" "150" ;	
+	}
+
+	onNamedEvent disableBarrels {
+		set "b_barrels::visible" "0" ;
+		transition "button_top::matcolor" "$desktop::arrow_off" "$desktop::grey" "150" ;
+		transition "button_barrelsarrow::matcolor" "$desktop::pointer_off" "$desktop::darkgrey" "150" ;
+	}
+
+	onNamedEvent disable {
+		nonInteractive 1;
+	}
+
+	onNamedEvent enable {
+		nonInteractive 0;
+	}
+
+	onNamedEvent barrelsInPlace {
+		transition "button_top::matcolor" "$desktop::grey" "$desktop::button_off" "150" ;
+		transition "button_barrels::matcolor" "$desktop::icon_grey" "$desktop::icon_off" "150" ;
+		transition "button_barrelsarrow::matcolor" "$desktop::darkgrey" "$desktop::redarrow" "150" ;
+		set "b_barrels::visible" "1" ;
+	}
+
+	windowDef bg_top
+	{
+		rect	0,0,640,240
+		visible	1
+		background	"gfx/guis/maps/recomp/chaindrag_bg"
+		matcolor	0.650,0.325,0.0352,1*guitable_8_10[time*0.0005]
+		matscaley	-1
+	}
+	windowDef bg_btm
+	{
+		rect	0,240,640,240
+		visible	1
+		background	"gfx/guis/maps/recomp/chaindrag_bg"
+		matcolor	0.650,0.325,0.0352,1*guitable_8_10[time*0.0005]
+	}
+	windowDef button_top
+	{
+		rect	262,-3,347,257
+		visible	1
+		background	"gfx/guis/maps/recomp/chaindrag_btn"
+		matcolor	0.576,0.576,0.576,1
+		matscaley	-1
+	}
+	windowDef button_bottom
+	{
+		rect	261,227,347,257
+		visible	1
+		background	"gfx/guis/maps/recomp/chaindrag_btn"
+		matcolor	0.854,0.584,0.313,1
+	}
+	windowDef button_arrowup
+	{
+		rect	18,17,333,247
+		visible	1
+		background	"gfx/guis/maps/recomp/chaindrag_arrow"
+		matcolor	0.576,0.576,0.576,1
+		matscaley	-1
+	}
+	windowDef button_arrowdown
+	{
+		rect	18,217,333,247
+		visible	1
+		background	"gfx/guis/maps/recomp/chaindrag_arrow"
+		matcolor	0.576,0.576,0.576,1
+	}
+	windowDef button_pointer_up
+	{
+		rect	105,73,162,120
+		visible	1
+		background	"gfx/guis/maps/recomp/chaindrag_pointer"
+		matcolor	0.219,0.219,0.219,1
+		matscaley	-1
+	}
+	windowDef button_pointer_dwn
+	{
+		rect	105,286,162,120
+		visible	1
+		background	"gfx/guis/maps/recomp/chaindrag_pointer"
+		matcolor	0.219,0.219,0.219,1
+	}
+	windowDef button_barrelsarrow
+	{
+		rect	436,142,139,61
+		visible	1
+		background	"gfx/guis/maps/recomp/chaindrag_arrow2"
+		matcolor	0.219,0.219,0.219,1
+	}
+	windowDef button_palletarrow
+	{
+		rect	436,364,139,61
+		visible	1
+		background	"gfx/guis/maps/recomp/chaindrag_arrow2"
+		matcolor	0.541,0.188,0.0352,1
+	}
+	windowDef button_barrels
+	{
+		rect	429,43,156,114
+		visible	1
+		background	"gfx/guis/maps/recomp/chaindrag_barrels"
+		matcolor	0.650,0.650,0.650,1
+	}
+	windowDef button_pallet
+	{
+		rect	430,275,156,117
+		visible	1
+		background	"gfx/guis/maps/recomp/chaindrag_pallet"
+		matcolor	0.984,0.905,0.741,1
+	}
+	windowDef topstuff
+	{
+		visible	1
+		rect	0,0,640,480
+		windowDef static
+		{
+			visible	1
+			rect	0,-297,640,1019
+			background	"gfx/guis/common/monitor_line4"
+			matcolor	0.941,0.921,0.843,0.14
+		}
+		windowDef dirt
+		{
+			visible	1
+			rect	0,0,640,480
+			background	"gfx/guis/common/screen_dirt8"
+			matcolor	0.603,0.639,0.380,.4
+			matscalex	-1
+		}
+		windowDef topreflect
+		{
+			visible	1
+			rect	0,-98,640,603
+			background	"gfx/guis/common/monitor_reflect2"
+			matcolor	0.556,0.521,0.435,1
+		}
+		windowDef monitor_darkedge2
+		{
+			visible	1
+			rect	0,0,640,480
+			background	"gfx/guis/common/monitor_darkedge2"
+			matcolor	0,0,0,1
+		}
+		windowDef addlines
+		{
+			visible	1
+			rect	1,0,640,480
+			background	"gfx/guis/common/add_lines1"
+			matcolor	0.141,0.141,0.101,1
+		}
+	}
+	windowDef b_uparrow
+	{
+		rect	54,46,261,182
+		visible	0
+
+		onMouseEnter {
+			transition "button_arrowup::matcolor" "$desktop::arrow_off" "$desktop::arrow_on" "0" ;
+			transition "button_pointer_up::matcolor" "$desktop::pointer_off" "$desktop::black" "0" ;
+		}
+
+		onMouseExit {
+			transition "button_arrowup::matcolor" "$desktop::arrow_on" "$desktop::arrow_off" "300" ;
+			transition "button_pointer_up::matcolor" "$desktop::black" "$desktop::pointer_off" "300" ;
+		}
+
+		onAction {
+			set "cmd" "play guisound_beep2 ; runscript" "$gui::gui_Parm_script_forward";
+		}
+
+	}
+	windowDef b_dnarrow
+	{
+		rect	54,252,261,182
+		visible	0
+
+		onMouseEnter {
+			transition "button_arrowdown::matcolor" "$desktop::arrow_off" "$desktop::arrow_on" "0" ;
+			transition "button_pointer_dwn::matcolor" "$desktop::pointer_off" "$desktop::black" "0" ;
+		}
+
+		onMouseExit {
+			transition "button_arrowdown::matcolor" "$desktop::arrow_on" "$desktop::arrow_off" "300" ;
+			transition "button_pointer_dwn::matcolor" "$desktop::black" "$desktop::pointer_off" "300" ;
+		}
+
+		onAction {
+			set "cmd" "play guisound_beep2 ; runscript" "$gui::gui_Parm_script_backward";
+		}
+
+	}
+	windowDef b_pallet
+	{
+		rect	396,263,211,180
+		visible	1
+
+		onMouseEnter {
+			transition "button_bottom::matcolor" "$desktop::button_off" "$desktop::button_on" "0" ;
+			transition "button_pallet::matcolor" "$desktop::icon_off" "$desktop::white" "0" ;
+		}
+
+		onMouseExit {
+			if("desktop::active" == 0)
+			{
+				transition "button_bottom::matcolor" "$desktop::button_on" "$desktop::button_off" "300" ;
+				transition "button_pallet::matcolor" "$desktop::white" "$desktop::icon_off" "300" ;
+			}
+		}
+
+		onAction {
+			set "cmd" "play guisound_beep2 ; runscript" "$gui::gui_Parm_script_pallet";
+			set "desktop::active" "1" ;
+			
+			set "b_uparrow::visible" "1" ;
+			set "b_dnarrow::visible" "1" ;
+			//	set "b_barrels::visible" "1" ;
+			
+			set "visible" "0" ;
+			
+			transition "button_bottom::matcolor" "$desktop::button_on" "$desktop::grey" "150" ;
+			transition "button_pallet::matcolor" "$desktop::white" "$desktop::icon_grey" "150" ;
+			transition "button_palletarrow::matcolor" "$desktop::redarrow" "$desktop::darkgrey" "150" ;
+			
+			//	transition "button_top::matcolor" "$desktop::grey" "$desktop::button_off" "150" ;
+			//	transition "button_barrels::matcolor" "$desktop::icon_grey" "$desktop::icon_off" "150" ;
+			//	transition "button_barrelsarrow::matcolor" "$desktop::darkgrey" "$desktop::redarrow" "150" ;
+			
+			transition "button_arrowup::matcolor" "$desktop::grey" "$desktop::arrow_off" "150" ;
+			transition "button_arrowdown::matcolor" "$desktop::grey" "$desktop::arrow_off" "150" ;
+			transition "button_pointer_up::matcolor" "$desktop::darkgrey" "$desktop::pointer_off" "150" ;
+			transition "button_pointer_dwn::matcolor" "$desktop::darkgrey" "$desktop::pointer_off" "150" ;	
+		}
+
+	}
+	windowDef b_barrels
+	{
+		rect	395,37,211,180
+		visible	0
+
+		onMouseEnter {
+			transition "button_top::matcolor" "$desktop::button_off" "$desktop::button_on" "0" ;
+			transition "button_barrels::matcolor" "$desktop::icon_off" "$desktop::white" "0" ;
+		}
+
+		onMouseExit {
+			transition "button_top::matcolor" "$desktop::button_on" "$desktop::button_off" "300" ;
+			transition "button_barrels::matcolor" "$desktop::white" "$desktop::icon_off" "300" ;
+		}
+
+		onAction {
+			set "cmd" "play guisound_beep2 ; runscript" "$gui::gui_Parm_script_barrels";
+		}
+
+	}
+}
