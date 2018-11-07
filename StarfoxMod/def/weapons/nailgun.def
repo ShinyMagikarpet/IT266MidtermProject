@@ -340,10 +340,10 @@ entityDef wpmod_nailgun_seek
 	"mod_showsurface"			"models/weapons/nailgun_mod_accuracy"
 	"mod_showsurface2"			"models/weapons/nailgun/scope"
 	
-	//"zoomFov"					"80"
+	"zoomFov"					"80"
 	"zoomTime"					".1"
 	"zoomHideCrosshair"			"0"
-	//"gui_zoom"					"guis/weapons/nailgun_scope.gui"
+	"gui_zoom"					"guis/weapons/nailgun_scope.gui"
 	"fx_guide"					"effects/weapons/nailgun/guide.fx"
 	"fx_guidestart"				"effects/weapons/nailgun/guide_start.fx"
 	
